@@ -1,24 +1,66 @@
-// Animation d'apparition
+// ===========================
+// APPARITION AU SCROLL
+// ===========================
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
             entry.target.classList.add("show");
         }
+
     });
+
+}, {
+    threshold: 0.2
 });
 
-document.querySelectorAll(".card, .about, .contact").forEach(el => {
-    observer.observe(el);
+document.querySelectorAll(".card, .contact-card, #about, #fleet")
+.forEach((element) => {
+    observer.observe(element);
 });
 
-// Année automatique
+// ===========================
+// ANNEE AUTOMATIQUE FOOTER
+// ===========================
+
+const footer = document.querySelector("footer");
 
 const year = new Date().getFullYear();
 
-const footer = document.querySelector("footer p");
+footer.innerHTML = `
+<p>© ${year} Sentinela Logística Ltda</p>
+<p>Site de démonstration hébergé sur GitHub Pages</p>
+`;
 
-if(footer){
-    footer.innerHTML =
-    `© ${year} Sentinela Logística Ltda — Site de démonstration hébergé sur GitHub Pages`;
-}
+// ===========================
+// BOUTON RETOUR EN HAUT
+// ===========================
+
+const topButton = document.createElement("button");
+
+topButton.innerHTML = "↑";
+
+topButton.id = "topBtn";
+
+document.body.appendChild(topButton);
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 400) {
+        topButton.style.display = "block";
+    } else {
+        topButton.style.display = "none";
+    }
+
+});
+
+topButton.addEventListener("click", () => {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
