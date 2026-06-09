@@ -205,3 +205,54 @@ footer p {
         gap: 15px;
     }
 }
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+.card,
+.contact-card,
+#about,
+#fleet {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ========================= */
+/* BOUTON TOP */
+/* ========================= */
+
+#topBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #d4a017;
+    color: #000;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: none;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+
+    z-index: 999;
+}
+
+#topBtn:hover {
+    background: #f1c232;
+}
